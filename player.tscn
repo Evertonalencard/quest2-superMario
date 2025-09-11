@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://i7hwv2d18t3b"]
+
+[ext_resource type="Script" uid="uid://b8y3us3dmoc82" path="res://player.gd" id="1_i3pqv"]
+[ext_resource type="Shape2D" uid="uid://er1kpyxnvu7o" path="res://Resorces/ColisionShapes/Small_Mario.tres" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://dl3f2qug5tkrx" path="res://Assents/mario.png" id="2_i3pqv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(156, 0, 39, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(39, 0, 39, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hs0m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqtel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sweqy")
+}],
+"loop": true,
+"name": &"small_idle",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(179, 385)
+collision_mask = 2
+script = ExtResource("1_i3pqv")
+metadata/_edit_group_ = true
+
+[node name="PlayerColisionShape" type="CollisionShape2D" parent="."]
+shape = ExtResource("1_onrkg")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="AreaColisionShape" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -1)
+shape = ExtResource("1_onrkg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_2hs0m")
+animation = &"small_idle"
