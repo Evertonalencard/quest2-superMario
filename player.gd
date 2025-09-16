@@ -15,14 +15,14 @@ enum PlayerMode{
 @onready var player_collision_Shape_2d = $PlayerColisionShape
 
 @export_group("Locomotion")
-@export var run_spead_damping = 0.5
+@export var run_spead_damping = 8.0
 @export var spead = 100.0
-@export var jump_velocity = -350
+@export var jump_velocity = -400.0
 @export_group("")
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
-		velocity.y = gravity * delta
+		velocity.y += gravity * delta
 	
 	if Input.is_action_just_pressed("jump") && is_on_floor():
 		velocity.y = jump_velocity
@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("jump") && velocity.y < 0 :
 		velocity.y *= 0.5
 	
-	var direction = Input.get_axis("rigth","left")
+	var direction = Input.get_axis("left","rigth")
 	
 	if direction:
 		velocity.x = lerp(velocity.x,spead * direction,run_spead_damping * delta)
