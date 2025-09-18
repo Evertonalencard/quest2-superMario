@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://5bb8nb6p5msk"]
+[gd_scene load_steps=6 format=3 uid="uid://5bb8nb6p5msk"]
 
 [ext_resource type="Texture2D" uid="uid://bsckvto0s2gh2" path="res://Assents/mariotile.png" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://i7hwv2d18t3b" path="res://player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cp2ffxht44yoe" path="res://goomba.tscn" id="3_h2yge"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xm2m"]
 texture = ExtResource("1_ig7tw")
@@ -4049,3 +4050,7 @@ layer_0/tile_data = PackedInt32Array(1966080, 2490368, 8, 2031616, 2490368, 9, 2
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 position = Vector2(156, 454)
+
+[node name="enemies" type="Node" parent="."]
+
+[node name="Goomba" parent="enemies" instance=ExtResource("3_h2yge")]
