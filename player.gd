@@ -10,7 +10,7 @@ enum PlayerMode{
 	SHOOTING
 }
 
-@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var animated_sprite_2d = $AnimatedSprite2D as PlayerAnimatedSprite
 @onready var area_collision_shape_2d =$Area2D/AreaColisionShape
 @onready var player_collision_Shape_2d = $PlayerColisionShape
 
@@ -19,6 +19,8 @@ enum PlayerMode{
 @export var spead = 100.0
 @export var jump_velocity = -400.0
 @export_group("")
+
+var player_mode = PlayerMode.SMALL
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -36,6 +38,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = lerp(velocity.x,spead * direction,run_spead_damping * delta)
 	else:
 		velocity.x = move_toward(velocity.x,0, spead * delta)
+		
+	animated_sprite_2d.trigger_animation(velocity, direction, player_mode)
 	
 	move_and_slide()
 
