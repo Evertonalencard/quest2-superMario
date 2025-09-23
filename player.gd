@@ -10,6 +10,13 @@ enum PlayerMode{
 	SHOOTING
 }
 
+@export_group("Stomping Enemies")
+@export var min_stomp_degree = 35
+@export var max_stomp_degree = 145
+@export var stomp_y_velocity =-150
+@export_group("")
+
+
 @onready var animated_sprite_2d = $AnimatedSprite2D as PlayerAnimatedSprite
 @onready var area_collision_shape_2d =$Area2D/AreaColisionShape
 @onready var player_collision_Shape_2d = $PlayerColisionShape
@@ -44,3 +51,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
