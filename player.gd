@@ -54,4 +54,20 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
+	if area is Enemy:
+		handle_enemy_colision(area)
+		
+func handle_enemy_colision(enemy: Enemy):
+	if enemy ==null:
+		return
+	if is_instance_of(enemy,Koopa) and (enemy as Koopa).in_a_shell:
+		(enemy as koopa).on_stomp(global_position)
+	else :
+		var engle_of_colision = rad_to_deg(position.engle_to_point(enemy.position))
+		
+		if engle_of_colision >min_stomp_degree && max_stomp_degree > engle_of_colision:
+			enemy.die()
+			on_enemy_stomped()
+			
+func on_enemy_stomped():
+	

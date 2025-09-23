@@ -4051,6 +4051,12 @@ layer_0/tile_data = PackedInt32Array(1966080, 2490368, 8, 2031616, 2490368, 9, 2
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 position = Vector2(156, 454)
+min_stomp_degree = null
+max_stomp_degree = null
+stomp_y_velocity = null
+run_spead_damping = null
+spead = null
+jump_velocity = null
 
 [node name="enemies" type="Node" parent="."]
 
