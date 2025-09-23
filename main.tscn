@@ -4051,14 +4051,11 @@ layer_0/tile_data = PackedInt32Array(1966080, 2490368, 8, 2031616, 2490368, 9, 2
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 position = Vector2(156, 454)
-collision_mask = 6
 
 [node name="enemies" type="Node" parent="."]
 
 [node name="Goomba" parent="enemies" instance=ExtResource("3_h2yge")]
 position = Vector2(778, 458)
-collision_mask = 9
 
 [node name="KOOPA" parent="enemies" instance=ExtResource("4_1bvp3")]
 position = Vector2(238, 402)
-collision_mask = 9
