@@ -70,4 +70,4 @@ func handle_enemy_colision(enemy: Enemy):
 			on_enemy_stomped()
 			
 func on_enemy_stomped():
-	
+	velocity.y = stomp_y_velocity
