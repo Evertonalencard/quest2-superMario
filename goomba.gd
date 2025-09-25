@@ -1,6 +1,6 @@
 extends Enemy
 class_name KOOPA
-const KOOPA_FULL_SHAPE =preload()
+const KOOPA_FULL_SHAPE = preload()
 
 
 # Called when the node enters the scene tree for the first time.
