@@ -47,6 +47,8 @@ position = Vector2(540, 358)
 collision_layer = 4
 collision_mask = 9
 script = ExtResource("1_yj1s3")
+horizontal_spead = null
+vertical_spead = null
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

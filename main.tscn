@@ -4065,3 +4065,5 @@ position = Vector2(778, 458)
 
 [node name="KOOPA" parent="enemies" instance=ExtResource("4_1bvp3")]
 position = Vector2(238, 402)
+horizontal_spead = null
+vertical_spead = null
