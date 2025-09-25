@@ -1,5 +1,16 @@
 extends Enemy
+class_name KOOPA 
+ 
+const KOOPA_FULL_SHAPE = preload("res://Resorces/ColisionShapes/koopa_full.tres")
+const KOOPA_SHELL_SHAPE = preload("res://Resorces/ColisionShapes/koopa_shell.tres")
+const KOOPA_SHELL_POSITION =Vector2(0,5)
+@onready var collision_shape_2d
+@export var slide_speed = 200
+var in_a_shell = false
 
+func _ready():
+	collision_shape_2d = KOOPA_FULL_SHAPE
+	
 
 
 func _on_area_entered(area: Area2D) -> void:
