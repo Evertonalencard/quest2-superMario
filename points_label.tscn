@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdpb1flbhtars"]
+
+[ext_resource type="Script" uid="uid://ceqw1ixw216hl" path="res://points_label.gd" id="1_thuy6"]
+
+[node name="PointsLabel" type="Label"]
+anchors_preset = -1
+anchor_left = 0.18
+anchor_top = 0.124000005
+anchor_right = 0.18
+anchor_bottom = 0.124000005
+offset_left = -22.360016
+offset_top = -11.352005
+offset_right = 17.639984
+offset_bottom = 11.647995
+theme_override_font_sizes/font_size = 10
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_thuy6")
+metadata/_edit_group_ = true

@@ -10,16 +10,22 @@ enum PlayerMode{
 	SHOOTING
 }
 
+signal points_scored(points: int)
+
+const POINTS_LABEL_SCENE = preload("res://points_label.tscn")
+
 @export_group("Stomping Enemies")
 @export var min_stomp_degree = 35
 @export var max_stomp_degree = 145
 @export var stomp_y_velocity =-150
 @export_group("")
+@onready
 
 
 @onready var animated_sprite_2d = $AnimatedSprite2D as PlayerAnimatedSprite
 @onready var area_collision_shape_2d =$Area2D/AreaColisionShape
 @onready var player_collision_Shape_2d = $PlayerColisionShape
+@onready var area_2d = $Area2D
 
 @export_group("Locomotion")
 @export var run_spead_damping = 8.0
@@ -28,6 +34,7 @@ enum PlayerMode{
 @export_group("")
 
 var player_mode = PlayerMode.SMALL
+var is_dead = false
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -58,7 +65,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		handle_enemy_colision(area)
 		
 func handle_enemy_colision(enemy: Enemy):
-	if enemy ==null:
+	if enemy ==null || is_dead:
 		return
 	if is_instance_of(enemy,Koopa) and (enemy as Koopa).in_a_shell:
 		(enemy as koopa).on_stomp(global_position)
@@ -68,6 +75,27 @@ func handle_enemy_colision(enemy: Enemy):
 		if engle_of_colision >min_stomp_degree && max_stomp_degree > engle_of_colision:
 			enemy.die()
 			on_enemy_stomped()
-			
+			spawn_points_label(enemy)
+		else:
+			die()
+
+	
 func on_enemy_stomped():
 	velocity.y = stomp_y_velocity
+	
+func spawn_points_label(enemy):
+	var points_label = POINTS_LABEL_SCENE.instantiate()
+	points_label.position = enemy.position + Vector2(-20,-20)
+	get_tree().root.add_child(points_label)
+	points_scored.emit(100)
+	
+func die():
+	if player_mode == player_mode.small:
+		is_dead = true
+		animated_sprite_2d.play("small_death")
+		set_physics_process(false)
+		
+		var death_tween = get_tree().create_tween()
+		death_tween.tween_property(self,"position", position + Vector2(0, -48), .5)
+		death_tween.chain().tween_property(self, "position", position + Vector2(0, 256), 1)
+		death_tween.tween_callback(func(): get_tree().reload_current_scene())
