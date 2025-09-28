@@ -19,8 +19,6 @@ const POINTS_LABEL_SCENE = preload("res://points_label.tscn")
 @export var max_stomp_degree = 145
 @export var stomp_y_velocity =-150
 @export_group("")
-@onready
-
 
 @onready var animated_sprite_2d = $AnimatedSprite2D as PlayerAnimatedSprite
 @onready var area_collision_shape_2d =$Area2D/AreaColisionShape
@@ -67,8 +65,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func handle_enemy_colision(enemy: Enemy):
 	if enemy ==null || is_dead:
 		return
-	if is_instance_of(enemy,Koopa) and (enemy as Koopa).in_a_shell:
-		(enemy as koopa).on_stomp(global_position)
+	if is_instance_of(enemy, KOOPA) and (enemy as KOOPA).in_a_shell:
+		(enemy as KOOPA).on_stomp(global_position)
 	else :
 		var engle_of_colision = rad_to_deg(position.engle_to_point(enemy.position))
 		
