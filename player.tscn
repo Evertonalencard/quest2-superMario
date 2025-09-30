@@ -294,7 +294,7 @@ shape = ExtResource("1_onrkg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"shooting_slide"
+animation = &"small_death"
 script = ExtResource("4_hqtel")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

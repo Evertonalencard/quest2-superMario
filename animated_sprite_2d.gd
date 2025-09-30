@@ -9,7 +9,7 @@ func trigger_animation(velocity: Vector2,direction: int,player_mode: Player.Play
 		play("%s_jump" % animation_prefix)
 		
 	elif sign(velocity.x) != sign(direction) && velocity.x != 0 && direction !=0:
-		play("%s_small_slide" % animation_prefix)
+		play("%s_slide" % animation_prefix)
 		scale.x = direction
 		
 	else:
@@ -19,7 +19,7 @@ func trigger_animation(velocity: Vector2,direction: int,player_mode: Player.Play
 			scale.x = 1
 		
 		if velocity.x != 0:
-			play("%s_small_run" % animation_prefix)
+			play("%s_run" % animation_prefix)
 		else:
-			play("%s_small_idle" % animation_prefix)
+			play("%s_idle" % animation_prefix)
 		

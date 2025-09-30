@@ -50,7 +50,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = lerp(velocity.x,spead * direction,run_spead_damping * delta)
 	else:
 		velocity.x = move_toward(velocity.x,0, spead * delta)
-		
+	
+	
 	animated_sprite_2d.trigger_animation(velocity, direction, player_mode)
 	
 	move_and_slide()
@@ -88,7 +89,7 @@ func spawn_points_label(enemy):
 	points_scored.emit(100)
 	
 func die():
-	if player_mode == player_mode.small:
+	if player_mode == PlayerMode.SMALL:
 		is_dead = true
 		animated_sprite_2d.play("small_death")
 		set_physics_process(false)
