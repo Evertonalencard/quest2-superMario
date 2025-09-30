@@ -68,7 +68,7 @@ func handle_enemy_colision(enemy: Enemy):
 	if is_instance_of(enemy, KOOPA) and (enemy as KOOPA).in_a_shell:
 		(enemy as KOOPA).on_stomp(global_position)
 	else :
-		var engle_of_colision = rad_to_deg(position.engle_to_point(enemy.position))
+		var engle_of_colision = rad_to_deg((enemy.position - position).angle())
 		
 		if engle_of_colision >min_stomp_degree && max_stomp_degree > engle_of_colision:
 			enemy.die()

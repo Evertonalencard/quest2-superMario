@@ -34,7 +34,7 @@ func die_from_hit():
 
 
 func _on_area_entered(area):
-	if area is Koopa and (area as Koopa).in_a_shell and (area as Koopa).horizontal_speed != 0:
+	if area is KOOPA and (area as KOOPA).in_a_shell and (area as KOOPA).horizontal_speed != 0:
 		die_from_hit()
 
 
