@@ -1,9 +1,5 @@
 extends Enemy
-<<<<<<< HEAD
-
-=======
-class_name GOOMBA
->>>>>>> 2f83e17db3da6721d7c3d0d5dee8ee11bbc92a94
+class_name goomba
 
 
 # Called when the node enters the scene tree for the first time.
