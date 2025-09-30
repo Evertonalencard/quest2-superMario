@@ -13,11 +13,11 @@ func _ready():
 	collision_shape_2d = KOOPA_FULL_SHAPE
 	
 func die():
-	if !in_a_shell
+	if !in_a_shell:
 		super.die()
 	
-	collision_shape_2d.set_deferred("shape",KOOPA_FULL_SHAPE)
-	collision_shape_2d.set_deferred("shape",KOOPA_FULL_POSITION)
+	collision_shape_2d.set_deferred("shape",KOOPA_SHELL_SHAPE)
+	collision_shape_2d.set_deferred("position",KOOPA_SHELL_POSITION)
 	in_a_shell =true
 func on_stomp(player_position: Vector2):
 	set_collision_layer_value(3,false)

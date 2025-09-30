@@ -1,5 +1,5 @@
 extends Enemy
-class_name KOOPA
+
 
 
 # Called when the node enters the scene tree for the first time.
